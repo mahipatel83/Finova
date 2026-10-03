@@ -48,8 +48,13 @@ export default function Login({ setView, setUser, registeredEmail }) {
         throw new Error(data.error || 'Authentication failed');
       }
 
-      // Save token and user details
+      // Save token
       localStorage.setItem('finova_token', data.token);
+
+      // TEMPORARY: Check that login returned a token
+      alert('LOGIN TOKEN: ' + data.token);
+
+      // Save user details
       localStorage.setItem(
         'finova_user',
         JSON.stringify(data.user)
