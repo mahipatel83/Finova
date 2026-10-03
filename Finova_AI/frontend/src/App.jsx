@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import LandingPage from './components/LandingPage';
 import Login from './components/Login';
 import Register from './components/Register';
-import Dashboard from './components/Dashboard';
 
 const SESSION_FLAG = 'finova_session_active';
 
@@ -33,6 +32,7 @@ function readSession() {
 
 function App() {
   const [user, setUser] = useState(() => readSession());
+
   const [view, setView] = useState(() => {
     return readSession() ? 'dashboard' : 'landing';
   });
@@ -53,7 +53,12 @@ function App() {
 
   const handleLogin = (loggedInUser) => {
     setUser(loggedInUser);
-    sessionStorage.setItem(SESSION_FLAG, '1');
+
+    sessionStorage.setItem(
+      SESSION_FLAG,
+      '1'
+    );
+
     setView('dashboard');
   };
 
@@ -86,11 +91,15 @@ function App() {
       )}
 
       {view === 'dashboard' && user && (
-        <Dashboard
-          user={user}
-          setView={setView}
-          setUser={setUser}
-        />
+        <div
+          style={{
+            padding: '50px',
+            fontSize: '30px',
+            textAlign: 'center',
+          }}
+        >
+          DASHBOARD TEST
+        </div>
       )}
     </>
   );
