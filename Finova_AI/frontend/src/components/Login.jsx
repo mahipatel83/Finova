@@ -39,20 +39,25 @@ export default function Login({ setView, setUser, registeredEmail }) {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({
+          email,
+          password,
+        }),
       });
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Authentication failed');
+        throw new Error(
+          data.error || 'Authentication failed'
+        );
       }
 
-      // Save token
-      localStorage.setItem('finova_token', data.token);
-
-      // TEMPORARY: Check that login returned a token
-      alert('LOGIN TOKEN: ' + data.token);
+      // Save authentication token
+      localStorage.setItem(
+        'finova_token',
+        data.token
+      );
 
       // Save user details
       localStorage.setItem(
@@ -66,13 +71,13 @@ export default function Login({ setView, setUser, registeredEmail }) {
         '1'
       );
 
-      // App.jsx handles moving to the dashboard
+      // Send logged-in user to App.jsx
       setUser(data.user);
 
     } catch (err) {
       setError(
         err.message ||
-        'Something went wrong. Make sure backend is running.'
+        'Something went wrong. Make sure the backend is running.'
       );
     } finally {
       setLoading(false);
@@ -139,7 +144,7 @@ export default function Login({ setView, setUser, registeredEmail }) {
             style={{
               fontSize: '1.5rem',
               fontWeight: '700',
-              marginTop: '10px'
+              marginTop: '10px',
             }}
           >
             Welcome Back
@@ -148,6 +153,7 @@ export default function Login({ setView, setUser, registeredEmail }) {
           <p className="auth-subtitle">
             Sign in to manage your budget and savings
           </p>
+
         </div>
 
         {infoMessage && (
@@ -186,7 +192,7 @@ export default function Login({ setView, setUser, registeredEmail }) {
               marginBottom: '20px',
               fontWeight: '500',
               border:
-                '1px solid rgba(239, 68, 68, 0.2)'
+                '1px solid rgba(239, 68, 68, 0.2)',
             }}
           >
             {error}
