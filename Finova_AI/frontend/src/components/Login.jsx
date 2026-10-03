@@ -55,13 +55,14 @@ export default function Login({ setView, setUser, registeredEmail }) {
         JSON.stringify(data.user)
       );
 
+      // Mark this browser tab as logged in
       sessionStorage.setItem(
         'finova_session_active',
         '1'
       );
 
+      // App.jsx handles moving to the dashboard
       setUser(data.user);
-      setView('dashboard');
 
     } catch (err) {
       setError(
