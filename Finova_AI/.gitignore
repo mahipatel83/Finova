@@ -1,0 +1,35 @@
+# ===== Secrets - never commit =====
+.env
+.vapid_keys.json
+
+# ===== Python / Django =====
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+staticfiles/
+db.sqlite3
+*.sqlite3
+
+# ===== ML model files (recreated by train_affordability_model) =====
+*.joblib
+*.pkl
+
+# ===== Frontend (React / Vite) =====
+node_modules/
+dist/
+dist-ssr/
+*.local
+
+# ===== Logs =====
+logs/
+*.log
+npm-debug.log*
+
+# ===== Editor / OS =====
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+*.suo
+*.sw?

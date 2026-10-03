@@ -1,0 +1,6 @@
+
+# Auto-generated push keys (keep private)
+.vapid_keys.json
+
+# Local secrets - never commit
+.env
