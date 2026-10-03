@@ -155,7 +155,7 @@ export default function Dashboard({ user, setView, setUser }) {
   // Categories list
   const [categoriesList, setCategoriesList] = useState([]);
 
-  const apiBase = window.location.origin.includes('5173') ? 'http://127.0.0.1:8000' : '';
+  const apiBase = 'https://finova-yu4v.onrender.com';
 
   const authHeaders = () => {
     const token = localStorage.getItem('finova_token');
